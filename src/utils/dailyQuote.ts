@@ -10,6 +10,13 @@ export interface DailyQuote {
   ayah: string;
 }
 
+interface Quote {
+  id: number;
+  text: string;
+  surahId: number | null;
+  ayah: string | null;
+}
+
 // Parse quotes once and cache them
 let cachedQuotes: Quote[] | null = null;
 
