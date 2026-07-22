@@ -11,7 +11,7 @@ export interface DailyQuote {
 }
 
 // Parse quotes once and cache them
-let cachedQuotes: any[] | null = null;
+let cachedQuotes: Quote[] | null = null;
 
 function getQuotesData() {
   if (cachedQuotes) return cachedQuotes;

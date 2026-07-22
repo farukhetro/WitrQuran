@@ -1,33 +1,52 @@
 .widget {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: linear-gradient(135deg, #3E2421 0%, #231210 100%);
+  border: 1px solid rgba(226, 143, 143, 0.1);
+  border-radius: 16px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.widget::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(226, 143, 143, 0.08) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .header {
   margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .titleWrapper {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+}
+
+.titleWrapper svg {
+  stroke: #D48B8B;
 }
 
 .title {
   font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--primary);
+  font-size: 1.15rem;
+  color: #FDFBF7;
+  letter-spacing: 0.02em;
 }
 
 .list {
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .listItem {
@@ -35,19 +54,23 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(226, 143, 143, 0.1);
   text-decoration: none;
   color: inherit;
-  transition: opacity 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  border-radius: 8px;
+  margin: 0 -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .listItem:last-child {
   border-bottom: none;
-  padding-bottom: 0;
 }
 
 .listItem:hover {
-  opacity: 0.8;
+  background-color: rgba(226, 143, 143, 0.05);
+  transform: translateX(2px);
 }
 
 .itemLeft {
@@ -63,28 +86,29 @@
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  background-color: var(--highlight-light);
-  color: var(--highlight);
+  background-color: rgba(212, 139, 139, 0.15);
+  color: #D48B8B;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .surahInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.1rem;
 }
 
 .surahName {
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--primary);
+  font-weight: 500;
+  font-size: 1rem;
+  color: #FDFBF7;
 }
 
 .arabicName {
   font-family: var(--font-arabic);
-  font-size: 1.1rem;
-  color: var(--primary);
+  font-size: 1.15rem;
+  color: #D48B8B;
+  opacity: 0.9;
 }
 
 .itemRight {
@@ -99,48 +123,34 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  color: var(--muted);
-  transition: all 0.2s ease;
   background: none;
   border: none;
+  color: rgba(212, 139, 139, 0.7);
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .moreBtn:hover {
-  color: var(--primary);
-  background-color: var(--accent);
+  background-color: rgba(212, 139, 139, 0.15);
+  color: #D48B8B;
 }
 
-.viewAll {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--primary);
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  transition: color 0.2s ease;
-}
-
-.viewAll:hover {
-  color: var(--highlight);
-}
-
-.emptyState {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 1rem;
-  text-align: center;
-  color: var(--muted);
-  gap: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.emptyState p:first-child {
-  color: var(--primary);
-  font-weight: 500;
+@media (max-width: 480px) {
+  .widget {
+    padding: 1.25rem;
+  }
+  
+  .itemLeft {
+    gap: 0.75rem;
+  }
+  
+  .numberBlock {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  
+  .surahName {
+    font-size: 0.95rem;
+  }
 }

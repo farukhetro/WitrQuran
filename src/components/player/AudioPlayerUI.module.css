@@ -13,9 +13,9 @@
   inset: 0;
   z-index: 1;
   background: 
-    radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.75) 100%),
-    linear-gradient(to bottom, rgba(10, 10, 10, 0.2) 0%, rgba(5, 5, 5, 0.95) 100%);
+    radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at center, transparent 30%, rgba(10, 10, 10, 0.6) 100%),
+    linear-gradient(to bottom, rgba(15, 15, 15, 0.4) 0%, #0a0a0a 100%);
   pointer-events: none;
 }
 
@@ -28,36 +28,166 @@
   pointer-events: none;
 }
 
-.surahArt {
-  position: absolute;
-  left: -5%;
-  bottom: 0%;
-  width: 50%;
-  height: 80%;
-  z-index: 0;
-  opacity: 0.15;
-  filter: blur(8px) contrast(1.2);
-  pointer-events: none;
-  mask-image: radial-gradient(circle at center, black 20%, transparent 70%);
-  -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 70%);
-}
+/* ================================ */
+/* GRID ENGINE - MOBILE FIRST       */
+/* ================================ */
 
 .playerContent {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  display: grid;
+  
+  /* Mobile (Portrait) Default: Single column, bottom-heavy */
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto auto auto;
+  grid-template-areas: 
+    "titles"
+    "progress"
+    "controls"
+    "brand";
+  padding: 1.5rem;
+  gap: 1.5rem;
   align-items: center;
-  padding: 3rem 2rem;
-  text-align: center;
 }
+
+/* Hidden by default on smallest screens (Phones) */
+.artArea { display: none; }
+.quoteArea { display: none; }
+
+.titleArea { grid-area: titles; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; }
+.progressArea { grid-area: progress; width: 100%; }
+.controlsArea { grid-area: controls; width: 100%; }
+.brandArea { grid-area: brand; display: flex; justify-content: center; margin-top: 1rem; }
+
+/* Grid specific children alignment */
+.surahArt {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0.3;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+/* ================================ */
+/* DEVICE-SPECIFIC EXPERIENCES      */
+/* ================================ */
+
+/* 1. Mobile Landscape (Standard Phones rotated) */
+@media (max-width: 850px) and (orientation: landscape) {
+  .playerContent {
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: 
+      "titles controls"
+      "brand progress";
+    align-items: center;
+    padding: 1rem 3rem;
+    gap: 1.5rem 3rem;
+  }
+  .titleArea { align-items: flex-start; text-align: left; justify-content: center; }
+  .controlsRow { justify-content: flex-end; }
+  .divider { justify-content: flex-start; }
+  .brandArea { justify-content: flex-start; margin-top: 0; }
+}
+
+/* 2. Tablet Portrait (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  .playerContent {
+    grid-template-rows: 1.5fr auto auto auto auto;
+    grid-template-areas: 
+      "art"
+      "titles"
+      "progress"
+      "controls"
+      "brand";
+    padding: 3rem;
+    gap: 2rem;
+    align-items: center;
+  }
+  .titleArea { justify-content: center; }
+  .artArea { display: block; grid-area: art; width: 50%; max-height: 40vh; margin: 0 auto; }
+}
+
+/* 3. Tablet Landscape & Small Desktop (1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px), (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  .playerContent {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto auto auto;
+    grid-template-areas: 
+      "art titles"
+      "art progress"
+      "art controls"
+      "art brand";
+    padding: 4rem;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .titleArea { justify-content: center; }
+  .artArea { display: block; grid-area: art; height: 100%; max-height: 50vh; width: 100%; }
+  .surahArt { opacity: 0.2; }
+}
+
+/* 4. Desktop Cinematic (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .playerContent {
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-rows: 1fr auto auto auto auto;
+    grid-template-areas: 
+      "art titles"
+      "art quote"
+      "art progress"
+      "art controls"
+      "art brand";
+    padding: 5rem 6rem;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .titleArea { justify-content: center; }
+  .artArea { display: block; grid-area: art; height: 100%; width: 100%; }
+  .surahArt { opacity: 0.3; mask-image: linear-gradient(to right, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%); }
+  .quoteArea { display: block; grid-area: quote; margin-bottom: 2rem; }
+}
+
+/* 5. Ultrawide / 4K Panoramic (1920px+) */
+@media (min-width: 1920px) {
+  .playerContent {
+    grid-template-columns: 1fr 2fr 1.5fr;
+    grid-template-rows: 1fr auto auto auto;
+    grid-template-areas: 
+      "art titles quote"
+      "art progress quote"
+      "art controls quote"
+      "art brand quote";
+    padding: 6rem 8rem;
+    align-items: center;
+    gap: 6rem;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+  .titleArea { justify-content: center; }
+  .artArea { display: block; grid-area: art; height: 100%; width: 100%; }
+  .surahArt { opacity: 0.4; mask-image: linear-gradient(to right, black 30%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%); }
+  .quoteArea { display: flex; grid-area: quote; align-items: center; justify-content: center; height: 100%; border-left: 1px solid rgba(212, 175, 55, 0.1); padding-left: 6rem; }
+  .quoteContainer { max-width: 400px; }
+}
+
+/* ================================ */
+/* COMPONENT STYLES                 */
+/* ================================ */
 
 /* Typography Hierarchy */
 .arabicTitle {
   font-family: var(--font-arabic);
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   color: #D4AF37;
   margin-bottom: 0.5rem;
   display: flex;
@@ -68,12 +198,12 @@
 
 .titleDecoration {
   color: #D4AF37;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   opacity: 0.8;
 }
 
 .title {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-family: var(--font-serif);
   font-weight: 400;
   color: #FFFFFF;
@@ -84,10 +214,9 @@
 
 .subtitle {
   color: #D4AF37;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 300;
   letter-spacing: 0.05em;
-  margin-bottom: 2rem;
   opacity: 0.9;
 }
 
@@ -96,14 +225,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
   gap: 1rem;
 }
 
 .dividerLine {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-  width: 250px;
+  width: clamp(80px, 15vw, 200px);
 }
 
 .dividerIcon {
@@ -111,14 +240,15 @@
   opacity: 0.8;
 }
 
+/* Quote */
 .quoteContainer {
-  margin-bottom: 3.5rem;
-  max-width: 650px;
+  display: flex;
+  flex-direction: column;
 }
 
 .quoteText {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   line-height: 1.6;
   color: #F3F4F6;
   font-style: italic;
@@ -127,7 +257,7 @@
 }
 
 .quoteSource {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
   color: #D4AF37;
   opacity: 0.8;
   letter-spacing: 0.05em;
@@ -138,16 +268,15 @@
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 1.5rem;
-  margin-bottom: 3.5rem;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 .timeText {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  min-width: 55px;
+  min-width: 45px;
 }
 
 .progressBarWrapper {
@@ -157,7 +286,7 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   cursor: pointer;
-  transition: height 0.2s ease;
+  transition: height 0.3s var(--ease-premium);
 }
 
 .progressBarWrapper:hover {
@@ -171,7 +300,6 @@
   height: 100%;
   background: rgba(212, 175, 55, 0.2);
   border-radius: 4px;
-  transition: width 0.2s linear;
 }
 
 .progressFill {
@@ -194,22 +322,14 @@
   height: 16px;
   background: #FFFFFF;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s var(--ease-premium), transform 0.3s var(--ease-premium);
 }
 
 .progressBarWrapper:hover .progressFill::after {
   opacity: 1;
-}
-
-.progressInput {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
+  transform: translateY(-50%) scale(1.1);
 }
 
 /* Controls */
@@ -217,8 +337,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3.5rem;
-  margin-bottom: 4rem;
+  gap: clamp(1rem, 4vw, 4rem);
 }
 
 .controlBtn {
@@ -230,17 +349,21 @@
   border: none;
   color: rgba(212, 175, 55, 0.7);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--ease-premium);
   gap: 0.5rem;
 }
 
 .controlBtn:hover {
   color: #D4AF37;
-  transform: scale(1.05);
+  transform: scale(1.02) translateY(-1px);
+}
+
+.controlBtn:active {
+  transform: scale(0.98);
 }
 
 .controlLabel {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   opacity: 0.8;
 }
@@ -253,12 +376,16 @@
   border: none;
   color: #D4AF37;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--ease-premium);
 }
 
 .navTrackBtn:hover:not(:disabled) {
   color: #FFF;
-  transform: scale(1.1);
+  transform: scale(1.05) translateY(-1px);
+}
+
+.navTrackBtn:active:not(:disabled) {
+  transform: scale(0.95);
 }
 
 .navTrackBtn:disabled {
@@ -271,30 +398,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 84px;
-  height: 84px;
+  width: clamp(60px, 10vw, 84px);
+  height: clamp(60px, 10vw, 84px);
 }
 
-.playBtnRing {
+.playBtnRing, .playBtnRing2 {
   position: absolute;
-  inset: -10px;
   border-radius: 50%;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  animation: pulseRing 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  animation: pulseRing 4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 }
 
-.playBtnRing2 {
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  border: 1px solid rgba(212, 175, 55, 0.1);
-  animation: pulseRing 3s cubic-bezier(0.4, 0, 0.6, 1) infinite 1.5s;
-}
+.playBtnRing { inset: -8px; }
+.playBtnRing2 { inset: -16px; border-color: rgba(212, 175, 55, 0.05); animation-delay: 2s; }
 
 .playBtn {
   position: relative;
-  width: 84px;
-  height: 84px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   background: linear-gradient(135deg, #F9D47C, #B58A2B);
   border: none;
@@ -303,38 +424,38 @@
   justify-content: center;
   color: #1A1A1A;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.1) inset;
+  transition: transform 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium);
   z-index: 2;
 }
 
 .playBtn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.2) inset;
 }
 
-.playBtn svg {
-  margin-left: 4px; /* Optical alignment for play icon */
+.playBtn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.playBtn.playing svg {
-  margin-left: 0;
-}
+.playBtn svg { margin-left: 4px; }
+.playBtn.playing svg { margin-left: 0; }
 
-/* Footer Branding */
+/* Branding */
 .branding {
   display: flex;
   align-items: center;
   gap: 1rem;
   color: rgba(212, 175, 55, 0.5);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
-.brandIcon {
-  width: 12px;
-  height: 12px;
+@keyframes pulseRing {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.2); opacity: 0; }
 }
 
 /* Overlays */
@@ -363,32 +484,18 @@
   font-size: 1rem;
 }
 
-@keyframes pulseRing {
-  0% { transform: scale(0.8); opacity: 0.8; }
-  100% { transform: scale(1.5); opacity: 0; }
+
+/* Accessibility / Performance */
+@media (prefers-reduced-motion: reduce) {
+  .playBtnRing, .playBtnRing2 { animation: none; display: none; }
+  .playBtn, .controlBtn, .navTrackBtn { transition: none; }
+  .playBtn:hover, .controlBtn:hover, .navTrackBtn:hover:not(:disabled) { transform: none; }
+  .progressBarWrapper, .progressBuffer, .progressFill, .progressFill::after { transition: none; }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .title {
-    font-size: 3.5rem;
-  }
-  
-  .controlsRow {
-    gap: 1.5rem;
-  }
-  
-  .playBtn {
-    width: 64px;
-    height: 64px;
-  }
-  
-  .playBtnWrapper {
-    width: 64px;
-    height: 64px;
-  }
-  
-  .surahArt {
-    opacity: 0.05;
-  }
+/* Mobile Performance */
+@media (max-width: 767px) {
+  .heroBackground { background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4) 0%, rgba(5, 5, 5, 0.95) 100%); }
+  .heroPattern { display: none; }
+  .playBtnRing, .playBtnRing2 { display: none; }
 }

@@ -1,8 +1,8 @@
 .card {
   position: relative;
-  background-color: var(--highlight-light);
-  border-radius: 12px;
-  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #3E2421 0%, #231210 100%);
+  border-radius: 16px;
+  padding: 3rem 1.5rem 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,52 +10,36 @@
   text-align: center;
   overflow: hidden;
   height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(226, 143, 143, 0.1);
 }
 
-.quoteIcon {
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: 
+    radial-gradient(circle at 100% 0%, rgba(226, 143, 143, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(226, 143, 143, 0.12) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-.quoteText {
-  font-family: 'Times New Roman', Times, serif; /* Using a serif font for quotes adds elegance */
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--primary);
-  line-height: 1.4;
-  max-width: 80%;
-  margin-bottom: 1rem;
-}
-
-.reference {
-  font-size: 1rem;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-}
-
-.surahInfo {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: var(--primary);
-  font-weight: 500;
+.content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
+  width: 100%;
+  z-index: 1;
 }
 
-.surahName {
-  color: var(--highlight);
-  font-weight: 600;
-}
-
-.ayahNum {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.divider {
+.quoteMark {
   margin-bottom: 1.5rem;
+  color: #D48B8B;
+  opacity: 0.9;
+}
+
+.quoteMark svg {
+  fill: #D48B8B;
 }
 
 .quoteTextContainer {
@@ -63,10 +47,38 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-weight: 400;
+  color: #FDFBF7;
+  line-height: 1.6;
+  max-width: 92%;
   margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
+}
+
+.surahInfo {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  color: #D48B8B;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.surahName {
+  color: #D48B8B;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ayahNum {
+  color: rgba(212, 139, 139, 0.8);
+  font-size: 0.9em;
 }
 
 .referenceContainer {
@@ -77,18 +89,18 @@
 }
 
 .diamond {
-  width: 6px;
-  height: 6px;
-  background-color: var(--highlight);
+  width: 5px;
+  height: 5px;
+  background-color: #D48B8B;
   transform: rotate(45deg);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2.5rem;
   z-index: 2;
 }
 
@@ -96,80 +108,58 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--highlight);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
+  color: #D48B8B;
+  font-size: 0.95rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-weight: 500;
 }
 
 .actionBtn:hover {
-  opacity: 0.7;
+  opacity: 0.8;
+  transform: translateY(-1px);
 }
 
-.newQuoteBtn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-  z-index: 2;
+.actionBtn svg {
+  stroke: #D48B8B;
 }
 
-.newQuoteBtn:hover {
-  color: var(--highlight);
-}
-
-.decoration {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.decLeft {
-  bottom: 0;
-  left: 0;
-}
-
-.decRight {
-  top: 0;
-  right: 0;
-}
-
+/* Toast */
 .toast {
   position: absolute;
-  bottom: 2rem;
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background-color: var(--primary);
-  color: var(--surface);
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  opacity: 0;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  z-index: 100;
+  animation: fadeOut 3s forwards;
   pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 10;
-  white-space: nowrap;
 }
 
-.toastVisible {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1;
+@keyframes fadeOut {
+  0% { opacity: 0; transform: translate(-50%, 10px); }
+  10% { opacity: 1; transform: translate(-50%, 0); }
+  90% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -10px); }
 }
 
-@media (max-width: 768px) {
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 2.5rem 1rem 2rem;
+  }
   .quoteText {
-    font-size: 1.25rem;
-    max-width: 90%;
+    font-size: 1.15rem;
+    line-height: 1.5;
   }
 }

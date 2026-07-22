@@ -38,6 +38,29 @@
   color: var(--highlight);
 }
 
+@media (min-width: 1024px) {
+  .hamburgerBtn {
+    display: none;
+  }
+}
+
+.edgeHoverTrigger {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .edgeHoverTrigger {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px; /* 16px trigger zone */
+    height: 100vh;
+    z-index: 9999;
+    background: transparent;
+  }
+}
+
 .logoContainer {
   display: flex;
   align-items: center;

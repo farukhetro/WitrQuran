@@ -272,15 +272,6 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
       {/* Background Layers */}
       <div className={styles.heroBackground}></div>
       <div className={styles.heroPattern}></div>
-      <div className={styles.surahArt}>
-        <Image 
-          src={surahPhoto} 
-          alt="Quran Art" 
-          fill 
-          style={{ objectFit: 'cover' }}
-          priority
-        />
-      </div>
 
       {errorMsg && (
         <div className={styles.errorOverlay}>
@@ -297,43 +288,65 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
         </div>
       )}
 
-      {/* Main Content */}
+      {/* Main Content (Grid Engine) */}
       <div className={styles.playerContent}>
         
-        <div className={styles.arabicTitle}>
-          <span className={styles.titleDecoration}>❖</span>
-          سورة {surah.arabicName}
-          <span className={styles.titleDecoration}>❖</span>
-        </div>
-        
-        <h1 className={styles.title}>{surah.transliteration}</h1>
-        <div className={styles.subtitle}>{surah.englishName}</div>
-        
-        <div className={styles.divider}>
-          <div className={styles.dividerLine}></div>
-          <div className={styles.dividerIcon}>✦</div>
-          <div className={styles.dividerLine}></div>
+        {/* Grid Area: Art */}
+        <div className={styles.artArea}>
+          <div className={styles.surahArt}>
+            <Image 
+              src={surahPhoto} 
+              alt="Quran Art" 
+              fill 
+              style={{ objectFit: 'cover' }}
+              priority
+            />
+          </div>
         </div>
 
+        {/* Grid Area: Titles */}
+        <div className={styles.titleArea}>
+          <div className={styles.arabicTitle}>
+            <span className={styles.titleDecoration}>❖</span>
+            سورة {surah.arabicName}
+            <span className={styles.titleDecoration}>❖</span>
+          </div>
+          <h1 className={styles.title}>{surah.transliteration}</h1>
+          <div className={styles.subtitle}>{surah.englishName}</div>
+          <div className={styles.divider}>
+            <div className={styles.dividerLine}></div>
+            <div className={styles.dividerIcon}>✦</div>
+            <div className={styles.dividerLine}></div>
+          </div>
+        </div>
+
+        {/* Grid Area: Quote */}
         {dailyQuote && (
-          <div className={styles.quoteContainer}>
-            <div className={styles.quoteText}>"{dailyQuote.text}"</div>
-            <div className={styles.quoteSource}>
-              Surah {dailyQuote.surahName} • Ayah {dailyQuote.ayah}
+          <div className={styles.quoteArea}>
+            <div className={styles.quoteContainer}>
+              <div className={styles.quoteText}>"{dailyQuote.text}"</div>
+              <div className={styles.quoteSource}>
+                Surah {dailyQuote.surahName} • Ayah {dailyQuote.ayah}
+              </div>
             </div>
           </div>
         )}
 
-        <div className={styles.progressSection}>
-          <span className={styles.timeText}>{formatTime(currentTime)}</span>
-          <div className={styles.progressBarWrapper} onClick={handleSeek}>
-            <div className={styles.progressBuffer} style={{ width: `${(buffered / duration) * 100 || 0}%` }}></div>
-            <div className={styles.progressFill} style={{ width: `${(currentTime / duration) * 100 || 0}%` }}></div>
+        {/* Grid Area: Progress */}
+        <div className={styles.progressArea}>
+          <div className={styles.progressSection}>
+            <span className={styles.timeText}>{formatTime(currentTime)}</span>
+            <div className={styles.progressBarWrapper} onClick={handleSeek}>
+              <div className={styles.progressBuffer} style={{ width: `${(buffered / duration) * 100 || 0}%` }}></div>
+              <div className={styles.progressFill} style={{ width: `${(currentTime / duration) * 100 || 0}%` }}></div>
+            </div>
+            <span className={styles.timeText}>{formatTime(duration)}</span>
           </div>
-          <span className={styles.timeText}>{formatTime(duration)}</span>
         </div>
 
-        <div className={styles.controlsRow}>
+        {/* Grid Area: Controls */}
+        <div className={styles.controlsArea}>
+          <div className={styles.controlsRow}>
           {/* Speed */}
           <button className={styles.controlBtn} onClick={cycleSpeed} aria-label="Playback Speed">
             <span style={{ fontSize: '1.2rem', fontWeight: 500, fontFamily: 'var(--font-mono, monospace)' }}>
@@ -411,9 +424,12 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
             <span className={styles.controlLabel}>{sleepTimer ? `${sleepTimer}m` : 'Timer'}</span>
           </button>
 
+          </div>
         </div>
 
-        <div className={styles.branding}>
+        {/* Grid Area: Branding */}
+        <div className={styles.brandArea}>
+          <div className={styles.branding}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
           </svg>
@@ -421,6 +437,7 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
           </svg>
+          </div>
         </div>
       </div>
     </div>

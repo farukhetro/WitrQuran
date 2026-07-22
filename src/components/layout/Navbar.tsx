@@ -10,47 +10,73 @@ import logoImg from '../../../public/logo.png';
 
 export default function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isPinned, setIsPinned] = useState(false); // Architecture for future pinning feature
+  const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
-  // Close drawer when route changes
+  // Close drawer when route changes (unless pinned)
   useEffect(() => {
-    setIsDrawerOpen(false);
-  }, [pathname]);
+    if (!isPinned && window.innerWidth < 1024) {
+      setIsDrawerOpen(false);
+    }
+  }, [pathname, isPinned]);
 
-  const handleMouseEnter = () => {
-    if (window.innerWidth >= 768) {
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-        hoverTimeoutRef.current = null;
-      }
-      setIsDrawerOpen(true);
+  const handleEdgeEnter = () => {
+    if (!isPinned && window.innerWidth >= 1024) {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+      
+      openTimeoutRef.current = setTimeout(() => {
+        setIsDrawerOpen(true);
+      }, 150); // ~150ms delay to prevent accidental activation
     }
   };
 
-  const handleMouseLeave = () => {
-    if (window.innerWidth >= 768) {
-      hoverTimeoutRef.current = setTimeout(() => {
+  const handleEdgeLeave = () => {
+    if (!isPinned && window.innerWidth >= 1024) {
+      if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+      
+      closeTimeoutRef.current = setTimeout(() => {
         setIsDrawerOpen(false);
-      }, 600);
+      }, 200); // 200ms delay to allow cursor movement into the drawer
+    }
+  };
+
+  const handleDrawerEnter = () => {
+    if (!isPinned && window.innerWidth >= 1024) {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    }
+  };
+
+  const handleDrawerLeave = () => {
+    if (!isPinned && window.innerWidth >= 1024) {
+      closeTimeoutRef.current = setTimeout(() => {
+        setIsDrawerOpen(false);
+      }, 200);
     }
   };
 
   const toggleDrawerMobile = () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1024) {
       setIsDrawerOpen(!isDrawerOpen);
     }
   };
 
   return (
     <>
+      {/* Invisible Edge Hover Trigger for Desktop */}
+      <div 
+        className={styles.edgeHoverTrigger}
+        onMouseEnter={handleEdgeEnter}
+        onMouseLeave={handleEdgeLeave}
+        aria-hidden="true"
+      />
+      
       <header className={styles.header}>
         <div className={`container ${styles.navbar}`}>
           <div className={styles.leftSection}>
             <button 
               className={styles.hamburgerBtn}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
               onClick={toggleDrawerMobile}
               aria-label="Toggle Surah Menu"
             >
@@ -93,8 +119,8 @@ export default function Navbar() {
       <SurahDrawer 
         isOpen={isDrawerOpen} 
         onClose={() => setIsDrawerOpen(false)} 
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleDrawerEnter}
+        onMouseLeave={handleDrawerLeave}
       />
     </>
   );

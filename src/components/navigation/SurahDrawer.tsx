@@ -35,9 +35,9 @@ export default function SurahDrawer({ isOpen, onClose, onMouseEnter, onMouseLeav
     );
   }, [searchQuery, surahs]);
 
-  // Lock body scroll on mobile when open
+  // Lock body scroll on mobile/tablet when open
   useEffect(() => {
-    if (isOpen && window.innerWidth < 768) {
+    if (isOpen && window.innerWidth < 1024) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -46,6 +46,30 @@ export default function SurahDrawer({ isOpen, onClose, onMouseEnter, onMouseLeav
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // Swipe to close functionality
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50; // minimum distance for swipe
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    if (isLeftSwipe && window.innerWidth < 1024) {
+      onClose();
+    }
+  };
 
   return (
     <div 
@@ -58,6 +82,9 @@ export default function SurahDrawer({ isOpen, onClose, onMouseEnter, onMouseLeav
         className={styles.drawer}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
         <div className={styles.header}>
           <h2 className={styles.title}>Surah</h2>

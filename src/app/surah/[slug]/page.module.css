@@ -138,9 +138,15 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .widgetsSection {
-    grid-template-columns: 1fr;
+@media (max-width: 767px) {
+  .widgetsSection, .container {
+    display: none;
+  }
+  
+  .heroContainer {
+    height: 100dvh;
+    min-height: auto;
+    margin-bottom: 0;
   }
   
   .title {

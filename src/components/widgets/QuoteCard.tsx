@@ -99,7 +99,7 @@ export default function QuoteCard(props: QuoteCardProps) {
     if (navigator.share && navigator.canShare && navigator.canShare(fullShareData)) {
       try {
         await navigator.share(fullShareData);
-      } catch (err: any) {
+      } catch (err) {
         if (err.name !== 'AbortError') {
           handleCopyFallback();
         }
