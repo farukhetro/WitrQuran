@@ -6,7 +6,6 @@ import styles from './page.module.css';
 import AudioPlayerUI from '@/components/player/AudioPlayerUI';
 import { getAudioUrl } from '@/config';
 import LastListened from '@/components/widgets/LastListened';
-import QuoteCard from '@/components/widgets/QuoteCard';
 import surahsData from '@/data/surahs.json';
 import { Surah } from '@/types/surah';
 
@@ -97,7 +96,6 @@ export default function SurahPlayerPage({ params }: { params: { slug: string } }
       <div className={styles.container}>
         <section className={styles.widgetsSection}>
           <LastListened />
-          <QuoteCard surahName={`Surah ${surah.transliteration}`} surahSlug={surah.slug} />
         </section>
       </div>
     </>
