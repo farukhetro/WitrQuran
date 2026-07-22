@@ -1,0 +1,175 @@
+.card {
+  position: relative;
+  background-color: var(--highlight-light);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  height: 100%;
+}
+
+.quoteIcon {
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.quoteText {
+  font-family: 'Times New Roman', Times, serif; /* Using a serif font for quotes adds elegance */
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--primary);
+  line-height: 1.4;
+  max-width: 80%;
+  margin-bottom: 1rem;
+}
+
+.reference {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.surahInfo {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.surahName {
+  color: var(--highlight);
+  font-weight: 600;
+}
+
+.ayahNum {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.divider {
+  margin-bottom: 1.5rem;
+}
+
+.quoteTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.referenceContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.diamond {
+  width: 6px;
+  height: 6px;
+  background-color: var(--highlight);
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--highlight);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.actionBtn:hover {
+  opacity: 0.7;
+}
+
+.newQuoteBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+
+.newQuoteBtn:hover {
+  color: var(--highlight);
+}
+
+.decoration {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decLeft {
+  bottom: 0;
+  left: 0;
+}
+
+.decRight {
+  top: 0;
+  right: 0;
+}
+
+.toast {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background-color: var(--primary);
+  color: var(--surface);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.toastVisible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .quoteText {
+    font-size: 1.25rem;
+    max-width: 90%;
+  }
+}

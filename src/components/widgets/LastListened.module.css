@@ -1,0 +1,146 @@
+.widget {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 1.25rem;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1.5rem;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.listItem:hover {
+  opacity: 0.8;
+}
+
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.numberBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--highlight-light);
+  color: var(--highlight);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.surahInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.surahName {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+
+.arabicName {
+  font-family: var(--font-arabic);
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.itemRight {
+  display: flex;
+  align-items: center;
+}
+
+.moreBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--muted);
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.moreBtn:hover {
+  color: var(--primary);
+  background-color: var(--accent);
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary);
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  transition: color 0.2s ease;
+}
+
+.viewAll:hover {
+  color: var(--highlight);
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.emptyState p:first-child {
+  color: var(--primary);
+  font-weight: 500;
+}

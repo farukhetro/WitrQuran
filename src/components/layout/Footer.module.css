@@ -1,0 +1,124 @@
+.footer {
+  background-color: var(--surface); /* White background requirement, assumed var(--surface) is white/very light in light mode */
+  padding-top: 4rem;
+  border-top: 1px solid var(--border); /* Thin top border */
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+  padding-bottom: 4rem;
+}
+
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-right: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  width: auto;
+  height: 90px;
+  object-fit: contain;
+  filter: invert(1); /* Invert black logo to white for dark theme */
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.linksSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.linkTitle {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.link {
+  color: var(--muted);
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  width: fit-content;
+}
+
+.link:hover {
+  color: var(--highlight); /* Soft blush accent color requirement */
+}
+
+.infoItem {
+  color: var(--muted);
+  font-size: 0.95rem;
+  display: block;
+}
+
+.bottomBar {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+}
+
+.bottomContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.copyright {
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.bottomText {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .footerContent {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+  }
+  .brandSection {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

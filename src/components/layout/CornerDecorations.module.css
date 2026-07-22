@@ -1,0 +1,68 @@
+.corner {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.85; /* Soft natural blending */
+  mix-blend-mode: multiply; /* Helps it blend luxuriously into the background */
+}
+
+.topLeft {
+  top: -50px;
+  left: -50px;
+}
+
+.topRight {
+  top: -50px;
+  right: -50px;
+}
+
+.bottomLeft {
+  bottom: 0;
+  left: -50px;
+}
+
+.bottomRight {
+  bottom: 0;
+  right: -50px;
+}
+
+.floralImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+.flippedY {
+  transform: scaleY(-1);
+}
+
+.flippedXY {
+  transform: scale(-1, -1);
+}
+
+@media (max-width: 1024px) {
+  .corner {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .corner {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .corner {
+    width: 150px;
+    height: 150px;
+  }
+}

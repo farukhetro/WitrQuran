@@ -1,0 +1,68 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  animation: float 6s ease-in-out infinite alternate;
+}
+
+.petal1 {
+  top: 15%;
+  left: 10%;
+  animation-duration: 7s;
+  animation-delay: 0s;
+}
+
+.petal2 {
+  top: 60%;
+  right: 15%;
+  width: 32px;
+  height: 32px;
+  animation-duration: 5s;
+  animation-delay: 2s;
+  transform: rotate(45deg);
+}
+
+.petal3 {
+  bottom: 20%;
+  left: 30%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 6.5s;
+  animation-delay: 1s;
+  transform: rotate(-30deg);
+}
+
+.petal4 {
+  top: 40%;
+  left: 80%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 5.5s;
+  animation-delay: 3s;
+  transform: rotate(15deg);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-40px) rotate(45deg) scale(1.1);
+    opacity: 0.3;
+  }
+}
