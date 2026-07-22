@@ -38,11 +38,6 @@
   color: var(--highlight);
 }
 
-@media (min-width: 1024px) {
-  .hamburgerBtn {
-    display: none;
-  }
-}
 
 .edgeHoverTrigger {
   display: none;

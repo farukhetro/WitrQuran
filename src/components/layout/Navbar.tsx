@@ -56,10 +56,8 @@ export default function Navbar() {
     }
   };
 
-  const toggleDrawerMobile = () => {
-    if (window.innerWidth < 1024) {
-      setIsDrawerOpen(!isDrawerOpen);
-    }
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
   return (
@@ -77,7 +75,7 @@ export default function Navbar() {
           <div className={styles.leftSection}>
             <button 
               className={styles.hamburgerBtn}
-              onClick={toggleDrawerMobile}
+              onClick={toggleDrawer}
               aria-label="Toggle Surah Menu"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
