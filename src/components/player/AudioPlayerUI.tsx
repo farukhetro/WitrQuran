@@ -8,6 +8,7 @@ import { Surah } from '@/types/surah';
 import { getAudioUrl } from '@/config';
 import { storage } from '@/utils/storage';
 import Image from 'next/image';
+import SurahDrawer from '@/components/navigation/SurahDrawer';
 
 interface AudioPlayerUIProps {
   surah?: Surah;
@@ -37,6 +38,8 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
   // Timer state
   const [sleepTimer, setSleepTimer] = useState<number | null>(null); // minutes
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const nextSurahSlugRef = useRef(nextSurahSlug);
   const routerRef = useRef(router);
@@ -399,7 +402,18 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
         {/* Grid Area: Branding */}
         <div className={styles.brandArea}>
           <div className={styles.branding}>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <button 
+            className={styles.hamburgerBtn} 
+            onClick={() => setIsDrawerOpen(true)}
+            aria-label="Open Surah Menu"
+            title="All Surahs"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '8px' }}>
             <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
           </svg>
           WITRQURAN
@@ -409,6 +423,10 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
           </div>
         </div>
       </div>
+      <SurahDrawer 
+        isOpen={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)} 
+      />
     </div>
   );
 }

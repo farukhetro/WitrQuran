@@ -409,6 +409,23 @@
 .playBtn.playing svg { margin-left: 0; }
 
 /* Branding */
+.hamburgerBtn {
+  background: transparent;
+  border: none;
+  color: rgba(212, 175, 55, 0.5);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+  border-radius: 4px;
+}
+.hamburgerBtn:hover {
+  color: #D4AF37;
+  transform: scale(1.1);
+}
+
 .branding {
   display: flex;
   align-items: center;
