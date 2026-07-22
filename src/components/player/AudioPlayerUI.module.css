@@ -54,7 +54,6 @@
 
 /* Hidden by default on smallest screens (Phones) */
 .artArea { display: none; }
-.quoteArea { display: none; }
 
 .titleArea { grid-area: titles; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; }
 .progressArea { grid-area: progress; width: 100%; }
@@ -138,10 +137,9 @@
 @media (min-width: 1440px) and (max-width: 1919px) {
   .playerContent {
     grid-template-columns: 1fr 1.2fr;
-    grid-template-rows: 1fr auto auto auto auto;
+    grid-template-rows: 1fr auto auto auto;
     grid-template-areas: 
       "art titles"
-      "art quote"
       "art progress"
       "art controls"
       "art brand";
@@ -154,19 +152,18 @@
   .titleArea { justify-content: center; }
   .artArea { display: block; grid-area: art; height: 100%; width: 100%; }
   .surahArt { opacity: 0.3; mask-image: linear-gradient(to right, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%); }
-  .quoteArea { display: block; grid-area: quote; margin-bottom: 2rem; }
 }
 
 /* 5. Ultrawide / 4K Panoramic (1920px+) */
 @media (min-width: 1920px) {
   .playerContent {
-    grid-template-columns: 1fr 2fr 1.5fr;
+    grid-template-columns: 1fr 1.2fr;
     grid-template-rows: 1fr auto auto auto;
     grid-template-areas: 
-      "art titles quote"
-      "art progress quote"
-      "art controls quote"
-      "art brand quote";
+      "art titles"
+      "art progress"
+      "art controls"
+      "art brand";
     padding: 6rem 8rem;
     align-items: center;
     gap: 6rem;
@@ -176,8 +173,6 @@
   .titleArea { justify-content: center; }
   .artArea { display: block; grid-area: art; height: 100%; width: 100%; }
   .surahArt { opacity: 0.4; mask-image: linear-gradient(to right, black 30%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%); }
-  .quoteArea { display: flex; grid-area: quote; align-items: center; justify-content: center; height: 100%; border-left: 1px solid rgba(212, 175, 55, 0.1); padding-left: 6rem; }
-  .quoteContainer { max-width: 400px; }
 }
 
 /* ================================ */
@@ -240,28 +235,7 @@
   opacity: 0.8;
 }
 
-/* Quote */
-.quoteContainer {
-  display: flex;
-  flex-direction: column;
-}
 
-.quoteText {
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
-  line-height: 1.6;
-  color: #F3F4F6;
-  font-style: italic;
-  font-weight: 300;
-  margin-bottom: 1rem;
-}
-
-.quoteSource {
-  font-size: clamp(0.8rem, 1vw, 1rem);
-  color: #D4AF37;
-  opacity: 0.8;
-  letter-spacing: 0.05em;
-}
 
 /* Progress Bar */
 .progressSection {
