@@ -21,7 +21,7 @@ function getQuotesData() {
   let idCounter = 1;
 
   for (const line of lines) {
-    const match = line.match(/^\s*\d+\.\s+"(.*)"\s+\((.*?)\)/);
+    const match = line.match(/^\s*\d+\.\s+(.*?)\s+\((.*?)\)/);
     if (match) {
       const text = match[1];
       const reference = match[2];

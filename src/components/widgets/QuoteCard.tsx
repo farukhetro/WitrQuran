@@ -133,11 +133,6 @@ export default function QuoteCard(props: QuoteCardProps) {
     return (
       <div className={styles.card}>
         <div className={styles.content} style={{ opacity: 0.3 }}>
-          <div className={styles.quoteMark}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--highlight)" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 11H6V7H10V11ZM10 11L7 16H9.5L12 11V11ZM20 11H16V7H20V11ZM20 11L17 16H19.5L22 11V11Z" />
-            </svg>
-          </div>
           <div className={styles.quoteTextContainer}>
             <p className={styles.quoteText}>Loading today's quote...</p>
           </div>
@@ -149,11 +144,6 @@ export default function QuoteCard(props: QuoteCardProps) {
   return (
     <div className={styles.card} style={{ animation: 'fadeIn 0.5s ease-out' }}>
       <div className={styles.content}>
-        <div className={styles.quoteMark}>
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--highlight)" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 11H6V7H10V11ZM10 11L7 16H9.5L12 11V11ZM20 11H16V7H20V11ZM20 11L17 16H19.5L22 11V11Z" />
-          </svg>
-        </div>
         <div className={styles.quoteTextContainer}>
           <p 
             className={styles.quoteText} 
