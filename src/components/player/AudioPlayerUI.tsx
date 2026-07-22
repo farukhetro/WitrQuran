@@ -9,7 +9,6 @@ import { getAudioUrl } from '@/config';
 import { storage } from '@/utils/storage';
 import Image from 'next/image';
 import surahPhoto from '../../../Logos/Mini Logos/Surah Photo.jpeg';
-import { getDailyQuote, DailyQuote } from '@/utils/dailyQuote';
 
 interface AudioPlayerUIProps {
   surah?: Surah;
@@ -34,8 +33,7 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isLooping, setIsLooping] = useState(false);
 
-  // Quote State
-  const [dailyQuote, setDailyQuote] = useState<DailyQuote | null>(null);
+
 
   // Timer state
   const [sleepTimer, setSleepTimer] = useState<number | null>(null); // minutes
@@ -52,13 +50,7 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
     routerRef.current = router;
   }, [router]);
 
-  useEffect(() => {
-    try {
-      setDailyQuote(getDailyQuote());
-    } catch (e) {
-      console.error("Failed to load daily quote", e);
-    }
-  }, []);
+
 
   // One-time Setup & Cleanup
   useEffect(() => {
@@ -320,17 +312,7 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
           </div>
         </div>
 
-        {/* Grid Area: Quote */}
-        {dailyQuote && (
-          <div className={styles.quoteArea}>
-            <div className={styles.quoteContainer}>
-              <div className={styles.quoteText}>"{dailyQuote.text}"</div>
-              <div className={styles.quoteSource}>
-                Surah {dailyQuote.surahName} • Ayah {dailyQuote.ayah}
-              </div>
-            </div>
-          </div>
-        )}
+
 
         {/* Grid Area: Progress */}
         <div className={styles.progressArea}>
