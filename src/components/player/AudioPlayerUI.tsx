@@ -8,7 +8,6 @@ import { Surah } from '@/types/surah';
 import { getAudioUrl } from '@/config';
 import { storage } from '@/utils/storage';
 import Image from 'next/image';
-import surahPhoto from '../../../Logos/Mini Logos/Surah Photo.jpeg';
 
 interface AudioPlayerUIProps {
   surah?: Surah;
@@ -283,18 +282,6 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
       {/* Main Content (Grid Engine) */}
       <div className={styles.playerContent}>
         
-        {/* Grid Area: Art */}
-        <div className={styles.artArea}>
-          <div className={styles.surahArt}>
-            <Image 
-              src={surahPhoto} 
-              alt="Quran Art" 
-              fill 
-              style={{ objectFit: 'cover' }}
-              priority
-            />
-          </div>
-        </div>
 
         {/* Grid Area: Titles */}
         <div className={styles.titleArea}>

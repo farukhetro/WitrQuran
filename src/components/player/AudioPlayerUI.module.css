@@ -97,9 +97,8 @@
 /* 2. Tablet Portrait (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
   .playerContent {
-    grid-template-rows: 1.5fr auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas: 
-      "art"
       "titles"
       "progress"
       "controls"
@@ -109,70 +108,63 @@
     align-items: center;
   }
   .titleArea { justify-content: center; }
-  .artArea { display: block; grid-area: art; width: 50%; max-height: 40vh; margin: 0 auto; }
 }
 
 /* 3. Tablet Landscape & Small Desktop (1024px - 1439px) */
 @media (min-width: 1024px) and (max-width: 1439px), (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
   .playerContent {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas: 
-      "art titles"
-      "art progress"
-      "art controls"
-      "art brand";
+      "titles"
+      "progress"
+      "controls"
+      "brand";
     padding: 4rem;
     align-items: center;
     gap: 3rem;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
   }
   .titleArea { justify-content: center; }
-  .artArea { display: block; grid-area: art; height: 100%; max-height: 50vh; width: 100%; }
-  .surahArt { opacity: 0.2; }
 }
 
 /* 4. Desktop Cinematic (1440px - 1919px) */
 @media (min-width: 1440px) and (max-width: 1919px) {
   .playerContent {
-    grid-template-columns: 1fr 1.2fr;
-    grid-template-rows: 1fr auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas: 
-      "art titles"
-      "art progress"
-      "art controls"
-      "art brand";
+      "titles"
+      "progress"
+      "controls"
+      "brand";
     padding: 5rem 6rem;
     align-items: center;
     gap: 4rem;
-    max-width: 1400px;
+    max-width: 900px;
     margin: 0 auto;
   }
   .titleArea { justify-content: center; }
-  .artArea { display: block; grid-area: art; height: 100%; width: 100%; }
-  .surahArt { opacity: 0.3; mask-image: linear-gradient(to right, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%); }
 }
 
 /* 5. Ultrawide / 4K Panoramic (1920px+) */
 @media (min-width: 1920px) {
   .playerContent {
-    grid-template-columns: 1fr 1.2fr;
-    grid-template-rows: 1fr auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas: 
-      "art titles"
-      "art progress"
-      "art controls"
-      "art brand";
+      "titles"
+      "progress"
+      "controls"
+      "brand";
     padding: 6rem 8rem;
     align-items: center;
     gap: 6rem;
-    max-width: 1800px;
+    max-width: 1000px;
     margin: 0 auto;
   }
   .titleArea { justify-content: center; }
-  .artArea { display: block; grid-area: art; height: 100%; width: 100%; }
-  .surahArt { opacity: 0.4; mask-image: linear-gradient(to right, black 30%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%); }
 }
 
 /* ================================ */
