@@ -40,6 +40,34 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleEdgeEnter = useCallback(() => {
+    if (window.innerWidth >= 1024) {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+      openTimeoutRef.current = setTimeout(() => setIsDrawerOpen(true), 150);
+    }
+  }, []);
+
+  const handleEdgeLeave = useCallback(() => {
+    if (window.innerWidth >= 1024) {
+      if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+      closeTimeoutRef.current = setTimeout(() => setIsDrawerOpen(false), 200);
+    }
+  }, []);
+
+  const handleDrawerEnter = useCallback(() => {
+    if (window.innerWidth >= 1024) {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    }
+  }, []);
+
+  const handleDrawerLeave = useCallback(() => {
+    if (window.innerWidth >= 1024) {
+      closeTimeoutRef.current = setTimeout(() => setIsDrawerOpen(false), 200);
+    }
+  }, []);
 
   const nextSurahSlugRef = useRef(nextSurahSlug);
   const routerRef = useRef(router);
@@ -404,7 +432,9 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
           <div className={styles.branding}>
           <button 
             className={styles.hamburgerBtn} 
-            onClick={() => setIsDrawerOpen(true)}
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+            onMouseEnter={handleEdgeEnter}
+            onMouseLeave={handleEdgeLeave}
             aria-label="Open Surah Menu"
             title="All Surahs"
           >
@@ -426,6 +456,8 @@ export default function AudioPlayerUI({ surah, nextSurahSlug, prevSurahSlug }: A
       <SurahDrawer 
         isOpen={isDrawerOpen} 
         onClose={() => setIsDrawerOpen(false)} 
+        onMouseEnter={handleDrawerEnter}
+        onMouseLeave={handleDrawerLeave}
       />
     </div>
   );

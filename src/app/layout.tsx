@@ -101,7 +101,6 @@ export default function RootLayout({
           <Navbar />
           <main style={{ flex: 1, position: 'relative' }}>
             {children}
-            <CornerDecorations position="bottom" />
           </main>
           <Footer />
         </div>

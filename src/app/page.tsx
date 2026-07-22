@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import styles from './page.module.css';
 import SurahCard from '@/components/ui/SurahCard';
-import LastListened from '@/components/widgets/LastListened';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
 import surahsData from '@/data/surahs.json';
@@ -91,11 +90,6 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-      </section>
-
-      {/* Widgets Section */}
-      <section className={styles.widgetsSection}>
-        <LastListened />
       </section>
     </div>
   );

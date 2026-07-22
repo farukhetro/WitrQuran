@@ -5,7 +5,6 @@ import { Suspense } from 'react';
 import styles from './page.module.css';
 import AudioPlayerUI from '@/components/player/AudioPlayerUI';
 import { getAudioUrl } from '@/config';
-import LastListened from '@/components/widgets/LastListened';
 import surahsData from '@/data/surahs.json';
 import { Surah } from '@/types/surah';
 
@@ -92,11 +91,8 @@ export default function SurahPlayerPage({ params }: { params: { slug: string } }
           />
         </Suspense>
       </div>
-
       <div className={styles.container}>
-        <section className={styles.widgetsSection}>
-          <LastListened />
-        </section>
+        
       </div>
     </>
   );
