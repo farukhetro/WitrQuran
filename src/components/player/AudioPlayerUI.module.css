@@ -478,7 +478,235 @@
 
 /* Mobile Performance */
 @media (max-width: 767px) {
-  .heroBackground { background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4) 0%, rgba(5, 5, 5, 0.95) 100%); }
+  .heroBackground { background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4) 0%, #080808 100%); }
   .heroPattern { display: none; }
   .playBtnRing, .playBtnRing2 { display: none; }
+}
+
+/* ================================ */
+/* MOBILE PREMIUM REDESIGN          */
+/* ================================ */
+
+.mobileTopBar { display: none; }
+.mobileArtwork { display: none; }
+.mobileMoreBtn { display: none; }
+.bottomSheetOverlay { display: none; }
+
+@media (max-width: 767px) {
+  .playerContent {
+    grid-template-rows: auto minmax(0, 1fr) auto auto auto;
+    grid-template-areas: 
+      "topbar"
+      "artwork"
+      "titles"
+      "progress"
+      "controls";
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .brandArea { display: none !important; }
+  .desktopControl { display: none !important; }
+  .mobileMoreBtn { display: flex; }
+  
+  .mobileTopBar {
+    display: flex;
+    grid-area: topbar;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .mobileIconBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobileBranding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mobileBrandTitle {
+    font-family: var(--font-serif, serif);
+    color: #D4AF37;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  
+  .mobileBrandSubtitle {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .mobileArtwork {
+    display: flex;
+    grid-area: artwork;
+    width: 100%;
+    max-width: 320px;
+    max-height: 100%;
+    aspect-ratio: 1;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .artworkPatternOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .artworkGlow {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .artworkContent {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .artworkTitle {
+    font-family: var(--font-serif, serif);
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-weight: 300;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+  
+  .artworkSubtitle {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  
+  .titleArea {
+    display: none !important;
+  }
+  
+  .controlsRow {
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 0;
+    padding: 0;
+  }
+  
+  .playBtnWrapper {
+    width: 76px;
+    height: 76px;
+  }
+  
+  .bottomSheetOverlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+  }
+  
+  .bottomSheetOverlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .bottomSheet {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #1a1a1a;
+    border-radius: 24px 24px 0 0;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+  }
+  
+  .bottomSheetOverlay.open .bottomSheet {
+    transform: translateY(0);
+  }
+  
+  .sheetHandle {
+    width: 40px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    margin: 0 auto 1.5rem auto;
+  }
+  
+  .sheetHeader {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  
+  .sheetRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .sheetRow:last-child {
+    border-bottom: none;
+  }
+  
+  .sheetRowLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  .sheetRowLeft svg {
+    color: #D4AF37;
+  }
+  
+  .sheetRowRight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+  }
 }

@@ -1,0 +1,125 @@
+.overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.promptCard {
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  position: relative;
+  pointer-events: auto;
+  animation: slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.iconContainer {
+  margin-bottom: 1rem;
+}
+
+.appIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.title {
+  font-family: var(--font-serif, serif);
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.androidGuide, .iosGuide {
+  width: 100%;
+}
+
+.installBtn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #D4AF37;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.installBtn:active {
+  transform: scale(0.98);
+  filter: brightness(0.9);
+}
+
+.steps {
+  text-align: left;
+  margin: 0;
+  padding-left: 1.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.steps strong {
+  color: #D4AF37;
+  font-weight: 500;
+}

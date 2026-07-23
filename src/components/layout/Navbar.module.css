@@ -166,6 +166,10 @@
 }
 
 @media (max-width: 768px) {
+  .hiddenOnMobilePlayer {
+    display: none !important;
+  }
+
   .navLinks {
     display: none; /* simple hidden for mobile for now, to be replaced by hamburger if needed */
   }

@@ -10,20 +10,20 @@ import logoImg from '../../../public/logo.png';
 
 export default function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isPinned, setIsPinned] = useState(false); // Architecture for future pinning feature
   const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
+  const isPlayerPage = pathname?.startsWith('/surah/');
 
-  // Close drawer when route changes (unless pinned)
+  // Close drawer when route changes
   useEffect(() => {
-    if (!isPinned && window.innerWidth < 1024) {
+    if (window.innerWidth < 1024) {
       setIsDrawerOpen(false);
     }
-  }, [pathname, isPinned]);
+  }, [pathname]);
 
   const handleEdgeEnter = () => {
-    if (!isPinned && window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024) {
       if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
       
       openTimeoutRef.current = setTimeout(() => {
@@ -33,7 +33,7 @@ export default function Navbar() {
   };
 
   const handleEdgeLeave = () => {
-    if (!isPinned && window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024) {
       if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
       
       closeTimeoutRef.current = setTimeout(() => {
@@ -43,13 +43,13 @@ export default function Navbar() {
   };
 
   const handleDrawerEnter = () => {
-    if (!isPinned && window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024) {
       if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     }
   };
 
   const handleDrawerLeave = () => {
-    if (!isPinned && window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024) {
       closeTimeoutRef.current = setTimeout(() => {
         setIsDrawerOpen(false);
       }, 200);
@@ -70,7 +70,7 @@ export default function Navbar() {
         aria-hidden="true"
       />
       
-      <header className={styles.header}>
+      <header className={`${styles.header} ${isPlayerPage ? styles.hiddenOnMobilePlayer : ''}`}>
         <div className={`container ${styles.navbar}`}>
           <div className={styles.leftSection}>
             <button 

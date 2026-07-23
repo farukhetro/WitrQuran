@@ -2,13 +2,15 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'WITRQURAN - Free Online Quran Listening',
+    name: 'WITRQURAN',
     short_name: 'WITRQURAN',
-    description: 'Listen to the Holy Quran online for free. Premium, distraction-free audio experience with 114 Surahs.',
+    description: 'A premium, native-feeling application to listen to the Holy Quran online for free.',
     start_url: '/',
     display: 'standalone',
     background_color: '#121212',
     theme_color: '#121212',
+    orientation: 'portrait',
+    scope: '/',
     icons: [
       {
         src: '/favicon.ico',
@@ -24,6 +26,7 @@ export default function manifest(): MetadataRoute.Manifest {
         src: '/android-chrome-512x512.png',
         sizes: '512x512',
         type: 'image/png',
+        purpose: 'any maskable'
       },
     ],
   };

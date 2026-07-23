@@ -1,13 +1,18 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
 import logoImg from '../../../public/logo.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  const isPlayerPage = pathname?.startsWith('/surah/');
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${isPlayerPage ? styles.hiddenOnMobilePlayer : ''}`}>
       <div className={`container ${styles.footerContent}`}>
         
         {/* Section 1: Brand */}

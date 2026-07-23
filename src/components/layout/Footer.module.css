@@ -116,6 +116,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hiddenOnMobilePlayer {
+    display: none !important;
+  }
+}
+
 @media (max-width: 640px) {
   .footerContent {
     grid-template-columns: 1fr;

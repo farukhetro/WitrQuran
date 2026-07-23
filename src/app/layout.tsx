@@ -1,9 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CornerDecorations from "@/components/layout/CornerDecorations";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import PwaRegister from "@/components/pwa/PwaRegister";
+import PwaInstallPrompt from "@/components/pwa/PwaInstallPrompt";
+
+export const viewport: Viewport = {
+  themeColor: '#121212',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
+};
 
 export const metadata: Metadata = {
   title: {
@@ -36,12 +46,21 @@ export const metadata: Metadata = {
     siteName: 'WITRQURAN',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/android-chrome-512x512.png',
+        width: 512,
+        height: 512,
+        alt: 'WITRQURAN Logo',
+      }
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'WITRQURAN - Free Online Quran Listening',
     description: 'Listen to the Holy Quran online for free. Premium, distraction-free audio experience.',
     creator: '@witrquran', // placeholder
+    images: ['/android-chrome-512x512.png'],
   },
   icons: {
     icon: [
@@ -52,6 +71,11 @@ export const metadata: Metadata = {
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'WITRQURAN',
   },
 };
 
@@ -95,6 +119,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <PwaRegister />
         <ScrollToTop />
         <div style={{ position: 'relative', zIndex: 0, minHeight: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
           <CornerDecorations position="top" />
@@ -104,6 +129,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <PwaInstallPrompt />
       </body>
     </html>
   );
