@@ -5,7 +5,6 @@ import Footer from "@/components/layout/Footer";
 import CornerDecorations from "@/components/layout/CornerDecorations";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import PwaRegister from "@/components/pwa/PwaRegister";
-import PwaInstallPrompt from "@/components/pwa/PwaInstallPrompt";
 
 export const viewport: Viewport = {
   themeColor: '#121212',
@@ -129,7 +128,6 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        <PwaInstallPrompt />
       </body>
     </html>
   );

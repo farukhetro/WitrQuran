@@ -6,6 +6,8 @@ export default function ContactPage() {
       </h1>
       <p style={{ color: 'var(--muted)', textAlign: 'center', marginBottom: '3rem', fontSize: '1.1rem' }}>
         Have questions or feedback? We'd love to hear from you.
+        <br /><br />
+        If you find any mistakes or have suggestions, please feel free to contact me at <a href="https://farukhetro.vercel.app/social" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--highlight)', textDecoration: 'underline' }}>https://farukhetro.vercel.app/social</a>. May Allah bless you for your feedback, and may He shower His blessings upon you and your family. Ameen.
       </p>
 
       <div style={{ 
