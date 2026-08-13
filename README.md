@@ -1,11 +1,11 @@
 # 🕌 WitrQuran
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Playfair+Display&size=28&pause=1000&color=2E7D6B&center=true&vCenter=true&width=650&lines=Read+the+Holy+Quran+%F0%9F%93%96;Listen+to+beautiful+recitations+%F0%9F%8E%A7;A+peaceful+Quran+experience+%F0%9F%8C%99" alt="WitrQuran animated heading" />
+  <img src="./assets/witrquran-banner.svg" alt="WitrQuran — Read, Listen, Reflect" width="100%">
 </p>
 
 <p align="center">
-  <strong>A beautifully designed web application for reading and listening to the Holy Quran.</strong>
+  <strong>A beautiful, peaceful web experience for reading and listening to the Holy Quran.</strong>
 </p>
 
 <p align="center">
@@ -18,61 +18,61 @@
 
 ---
 
-## ✨ About
+## 🌙 About
 
-**WitrQuran** is a modern Quran web application built with **Next.js**, designed to make reading and listening to the Holy Quran simple, peaceful, and accessible.
+**WitrQuran** is a modern Quran web application built with **Next.js**, created to make reading and listening to the Holy Quran feel calm, focused, and beautiful.
 
-The interface focuses on a **clean, distraction-free experience** so you can spend less time navigating and more time connecting with the Quran. 🌙
+The project is designed around a simple idea:
 
-<p align="center">
-  <img src="https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif" width="500" alt="Animated decoration" />
-</p>
+> **Read. Listen. Reflect.**
+
+WitrQuran provides a clean and distraction-free experience for anyone who wants to read or listen to the Holy Quran.
 
 ---
 
-## 🌟 Features
+## ✨ Features
 
-| Feature                  | Description                                                         |
-| ------------------------ | ------------------------------------------------------------------- |
-| 📖 **Read the Quran**    | Enjoy a clean and distraction-free Quran reading experience.        |
-| 🎧 **Listen**            | Listen to high-quality audio recitations of the Surahs.             |
-| 📱 **Responsive Design** | Works beautifully across mobile, tablet, and desktop devices.       |
-| ✨ **Modern UI**          | A carefully crafted interface focused on simplicity and aesthetics. |
+### 📖 Read the Quran
 
-### 📖 Read
-
-Read the Holy Quran through a clean interface designed to minimize distractions and keep your focus where it belongs.
+Enjoy a clean and distraction-free Quran reading experience designed to keep your focus on the Quran.
 
 ### 🎧 Listen
 
-Listen to beautiful Quranic recitations using the built-in audio experience.
+Listen to high-quality audio recitations of Surahs with a beautiful and simple audio experience.
 
-### 📱 Everywhere
+### 📱 Fully Responsive
 
-Whether you're using a phone, tablet, or desktop, WitrQuran is designed to provide a smooth experience across devices.
+WitrQuran works beautifully across:
+
+* 📱 Mobile
+* 📲 Tablet
+* 💻 Desktop
+
+### 🎨 Modern UI
+
+A carefully crafted interface focused on:
+
+* Smooth animations
+* Clean typography
+* Peaceful colors
+* Easy navigation
+* Beautiful Quran reading experience
 
 ---
 
-## 🖼️ Experience
+## 🌿 Design
 
-<p align="center">
+WitrQuran is designed to feel like a **quiet digital space for reflection**.
 
-```text
-                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+The visual style includes:
 
-                         ﷽
-
-              Read. Listen. Reflect. Remember.
-
-                         ─────── ✦ ───────
-
-                         وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا
-```
-
-</p>
-
-> **"And recite the Qur'an with measured recitation."**
-> — Qur'an 73:4
+* 🌙 Islamic-inspired elements
+* ✨ Subtle animations
+* 🌿 Calm green tones
+* 🏵️ Warm gold accents
+* 📖 Clear typography
+* 🎧 Audio-inspired animations
+* 📱 Responsive layouts
 
 ---
 
@@ -103,19 +103,15 @@ npm run dev
 
 ### 4. Open the application
 
-Visit:
+Open your browser and visit:
 
 ```text
 http://localhost:3000
 ```
 
-You should now see WitrQuran running locally. 🎉
-
 ---
 
-## 🛠️ Technologies
-
-WitrQuran is built using modern web technologies:
+## 🛠️ Technologies Used
 
 <p align="center">
 
@@ -125,27 +121,51 @@ WitrQuran is built using modern web technologies:
 
 </p>
 
-* **Next.js** — React framework for the web
-* **React** — UI development
+* **Next.js** — React framework for building modern web applications
+* **React** — Library for building user interfaces
 * **TypeScript** — Type-safe JavaScript development
 
 ---
 
-## 📂 Project Setup
+## 📁 Project Structure
 
-After installing the dependencies, your typical development workflow is:
-
-```bash
-npm install
-npm run dev
+```text
+WitrQuran/
+├── assets/
+│   └── witrquran-banner.svg
+├── app/
+├── components/
+├── public/
+├── README.md
+├── package.json
+└── LICENSE
 ```
 
-For a production build:
+> Your exact folder structure may differ depending on your project setup.
 
-```bash
-npm run build
-npm start
+---
+
+## ✨ Animated README Banner
+
+The README uses a custom animated SVG banner instead of a generic loading spinner.
+
+The animation includes:
+
+* 🌙 Floating crescent
+* ✨ Twinkling stars
+* 🕌 Arabic Bismillah
+* 🎧 Animated audio visualizer
+* 🌿 Green gradient background
+* 🏵️ Gold decorative elements
+* 💫 Subtle glowing effects
+
+The animation is stored locally:
+
+```text
+assets/witrquran-banner.svg
 ```
+
+Make sure this file exists in your repository for the README animation to appear.
 
 ---
 
@@ -159,7 +179,7 @@ If you'd like to improve WitrQuran:
 2. Create a new branch.
 3. Make your changes.
 4. Test your changes locally.
-5. Commit your work.
+5. Commit your changes.
 6. Push your branch.
 7. Open a Pull Request.
 
@@ -169,9 +189,10 @@ Every contribution, whether big or small, is appreciated.
 
 ## 💡 Support & Feedback
 
-If you find a mistake, encounter an issue, or have a suggestion that could improve WitrQuran, please feel free to reach out.
+If you find any mistakes, encounter an issue, or have suggestions for improving WitrQuran, please feel free to contact me.
 
-🌐 **Contact & Socials:**
+🌐 **Social & Contact:**
+
 https://farukhetro.vercel.app/social
 
 May Allah bless you for your feedback, and may He shower His blessings upon you and your family.
@@ -182,16 +203,20 @@ May Allah bless you for your feedback, and may He shower His blessings upon you 
 
 ## 📜 License
 
-This project is completely open source and can be used however you want.
+This project is completely open source and you can use it however you want.
 
-WitrQuran is licensed under the **MIT License**.
+It is licensed under the **MIT License**.
 
 See the [`LICENSE`](LICENSE) file for more details.
 
 ---
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Playfair+Display&size=22&pause=1200&color=2E7D6B&center=true&vCenter=true&width=550&lines=May+Allah+accept+our+efforts+%F0%9F%A4%B2;JazakAllahu+Khairan+%E2%9C%A8;Keep+reading.+Keep+listening.+Keep+remembering." alt="WitrQuran closing animation" />
+
+### بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+
+**Read • Listen • Reflect**
+
 </p>
 
 <p align="center">
