@@ -1,78 +1,96 @@
 # 🕌 WitrQuran
 
 <p align="center">
-  <img src="./assets/witrquran-banner.svg" alt="WitrQuran — Read, Listen, Reflect" width="100%">
+  <strong>Listen to the Holy Quran with clarity and peace.</strong>
 </p>
 
 <p align="center">
-  <strong>A beautiful, peaceful web experience for reading and listening to the Holy Quran.</strong>
+  <a href="https://witrquran.vercel.app">
+    <img src="https://img.shields.io/badge/🌙%20Live%20Website-WitrQuran-0f766e?style=for-the-badge" alt="Visit WitrQuran">
+  </a>
 </p>
 
 <p align="center">
+  <a href="https://witrquran.vercel.app">Website</a> •
   <a href="#-features">Features</a> •
   <a href="#-getting-started">Getting Started</a> •
   <a href="#-technologies">Technologies</a> •
-  <a href="#-contributing">Contributing</a> •
-  <a href="#-support--feedback">Support</a>
+  <a href="#-contributing">Contributing</a>
 </p>
 
 ---
 
 ## 🌙 About
 
-**WitrQuran** is a modern Quran web application built with **Next.js**, created to make reading and listening to the Holy Quran feel calm, focused, and beautiful.
+**WitrQuran** is a simple and peaceful web application designed to help Muslims listen to the Holy Quran online.
 
-The project is designed around a simple idea:
+Choose any Surah and listen to its recitation with a clean, distraction-free experience.
 
-> **Read. Listen. Reflect.**
+<p align="center">
 
-WitrQuran provides a clean and distraction-free experience for anyone who wants to read or listen to the Holy Quran.
+### بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+
+**Read • Listen • Reflect**
+
+</p>
+
+---
+
+## 🌐 Live Website
+
+<p align="center">
+
+### 👉 [Visit WitrQuran](https://witrquran.vercel.app)
+
+</p>
+
+You can use WitrQuran directly in your browser:
+
+**https://witrquran.vercel.app**
+
+No installation or registration is required.
 
 ---
 
 ## ✨ Features
 
-### 📖 Read the Quran
+### 🎧 Listen to the Quran
 
-Enjoy a clean and distraction-free Quran reading experience designed to keep your focus on the Quran.
+Listen to Surahs of the Holy Quran with a simple and peaceful audio experience.
 
-### 🎧 Listen
+### 📖 Browse Surahs
 
-Listen to high-quality audio recitations of Surahs with a beautiful and simple audio experience.
+Browse through the Surahs of the Quran and select the one you want to listen to.
 
-### 📱 Fully Responsive
+### 🔎 Search Surahs
 
-WitrQuran works beautifully across:
+Quickly find a Surah using the built-in Surah search.
+
+### 📱 Responsive Design
+
+WitrQuran is designed to work across:
 
 * 📱 Mobile
 * 📲 Tablet
 * 💻 Desktop
 
-### 🎨 Modern UI
+### 🌿 Simple & Peaceful UI
 
-A carefully crafted interface focused on:
+A clean interface designed to keep the focus on listening to the Quran rather than unnecessary distractions.
 
-* Smooth animations
-* Clean typography
-* Peaceful colors
-* Easy navigation
-* Beautiful Quran reading experience
+### 🆓 Free to Use
+
+WitrQuran is free to use and does not require registration.
 
 ---
 
-## 🌿 Design
+## 🕌 Why WitrQuran?
 
-WitrQuran is designed to feel like a **quiet digital space for reflection**.
+WitrQuran was created with a simple goal:
 
-The visual style includes:
+> **To make listening to the Holy Quran easy, peaceful, and accessible to everyone.**
 
-* 🌙 Islamic-inspired elements
-* ✨ Subtle animations
-* 🌿 Calm green tones
-* 🏵️ Warm gold accents
-* 📖 Clear typography
-* 🎧 Audio-inspired animations
-* 📱 Responsive layouts
+Whether you are at home, traveling, studying, or simply looking for a moment of peace, you can open WitrQuran and start listening.
 
 ---
 
@@ -95,7 +113,7 @@ cd WitrQuran
 npm install
 ```
 
-### 3. Start the development server
+### 3. Run the development server
 
 ```bash
 npm run dev
@@ -103,7 +121,7 @@ npm run dev
 
 ### 4. Open the application
 
-Open your browser and visit:
+Visit:
 
 ```text
 http://localhost:3000
@@ -111,61 +129,35 @@ http://localhost:3000
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies
 
 <p align="center">
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge\&logo=next.js\&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge\&logo=typescript\&logoColor=white)
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
 
 </p>
 
-* **Next.js** — React framework for building modern web applications
-* **React** — Library for building user interfaces
-* **TypeScript** — Type-safe JavaScript development
+* **Next.js**
+* **React**
+* **TypeScript**
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```text
 WitrQuran/
-├── assets/
-│   └── witrquran-banner.svg
 ├── app/
 ├── components/
 ├── public/
-├── README.md
 ├── package.json
+├── README.md
 └── LICENSE
 ```
 
-> Your exact folder structure may differ depending on your project setup.
-
----
-
-## ✨ Animated README Banner
-
-The README uses a custom animated SVG banner instead of a generic loading spinner.
-
-The animation includes:
-
-* 🌙 Floating crescent
-* ✨ Twinkling stars
-* 🕌 Arabic Bismillah
-* 🎧 Animated audio visualizer
-* 🌿 Green gradient background
-* 🏵️ Gold decorative elements
-* 💫 Subtle glowing effects
-
-The animation is stored locally:
-
-```text
-assets/witrquran-banner.svg
-```
-
-Make sure this file exists in your repository for the README animation to appear.
+> The exact structure may vary depending on your project configuration.
 
 ---
 
@@ -183,7 +175,7 @@ If you'd like to improve WitrQuran:
 6. Push your branch.
 7. Open a Pull Request.
 
-Every contribution, whether big or small, is appreciated.
+Every contribution is appreciated.
 
 ---
 
@@ -213,12 +205,12 @@ See the [`LICENSE`](LICENSE) file for more details.
 
 <p align="center">
 
-### بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+### 🌙 Listen to the Quran
 
-**Read • Listen • Reflect**
+**[Open WitrQuran →](https://witrquran.vercel.app)**
 
-</p>
+<br>
 
-<p align="center">
-  Made with ❤️ for the Quran
+Made with ❤️ for the Quran
+
 </p>
